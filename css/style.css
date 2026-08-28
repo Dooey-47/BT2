@@ -141,12 +141,16 @@ nav a {
 
 /* HIỆU ỨNG MENU */
 nav a:hover {
+    color: var(--color-surface);
     background-color: var(--color-secondary);
 }
 
 nav a:focus-visible {
+    color: var(--color-surface);
+    background-color: var(--color-secondary);
+
     outline: 2px solid var(--color-surface);
-    outline-offset: -3px;
+    outline-offset: -2px;
 }
 
 

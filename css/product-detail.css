@@ -1,0 +1,95 @@
+/* CHI TIẾT SẢN PHẨM */
+main > section:first-child article {
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+main > section:first-child article > img {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: var(--space-lg);
+    border-radius: var(--radius-md);
+}
+
+main > section:first-child h1 {
+    margin-top: 0;
+}
+
+main > section:first-child h2 {
+    margin-top: var(--space-lg);
+}
+
+main > section:first-child li {
+    margin-bottom: var(--space-sm);
+}
+
+/* NHÓM NÚT */
+main > section:first-child article button {
+    margin: var(--space-sm) var(--space-sm) 0 0;
+}
+
+/* SẢN PHẨM LIÊN QUAN */
+main > aside {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+main > aside > h2 {
+    grid-column: 1 / -1;
+    margin-top: 0;
+}
+
+main > aside article {
+    padding: var(--space-md);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: transform .2s ease, border-color .2s ease;
+}
+
+main > aside article:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-secondary);
+}
+
+main > aside article img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+main > aside article h3 {
+    margin-bottom: var(--space-sm);
+}
+
+main > aside article p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+/* DESKTOP: CHI TIẾT + SẢN PHẨM LIÊN QUAN */
+@media (min-width: 900px) {
+    main {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: var(--space-xl);
+    }
+
+    main > section,
+    main > aside {
+        margin-bottom: 0;
+    }
+
+    main > aside {
+        grid-template-columns: 1fr;
+        align-content: start;
+    }
+}
