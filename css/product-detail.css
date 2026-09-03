@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Đặc Sản Tây Nguyên — product-detail.css
+   Trang chi tiết sản phẩm: bố cục nội dung chính + sản phẩm liên quan.
+   Mobile-first; mở rộng bằng min-width.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Layout tổng của trang chi tiết
+   -------------------------------------------------------------------- */
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+}
+
+@media (min-width: 960px) {
+    .product-detail-layout {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+    }
+}
+
+/* --------------------------------------------------------------------
+   Nội dung chính sản phẩm
+   -------------------------------------------------------------------- */
+.product-main article {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+}
+
+.product-main img {
+    margin-bottom: var(--space-md);
+}
+
+.product-main h2 {
+    margin-top: var(--space-lg);
+    font-size: 1.2rem;
+}
+
+.product-main ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-sm);
+}
+
+.product-main li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Giá bán nổi bật */
+.product-main h2 + p strong {
+    font-size: 1.4rem;
+    color: var(--color-secondary);
+}
+
+/* --------------------------------------------------------------------
+   Nhóm nút hành động (Flexbox)
+   -------------------------------------------------------------------- */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.action-buttons button:last-child {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.action-buttons button:last-child:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+/* --------------------------------------------------------------------
+   Sản phẩm liên quan (Grid)
+   -------------------------------------------------------------------- */
+.related-products {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    position: static;
+}
+
+.related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+.related-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    transition: transform 0.2s var(--ease-standard),
+                box-shadow 0.2s var(--ease-standard);
+}
+
+.related-card:hover,
+.related-card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(30, 41, 59, 0.1);
+}
+
+.related-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+}
+
+.related-card p {
+    margin-bottom: 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+@media (min-width: 960px) {
+    .related-products {
+        position: sticky;
+        top: var(--space-md);
+    }
+
+    .related-products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 959px) {
+    .related-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

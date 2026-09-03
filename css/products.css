@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Đặc Sản Tây Nguyên — products.css
+   Trang danh sách sản phẩm: bố cục sidebar bộ lọc + lưới sản phẩm.
+   Mobile-first; mở rộng bằng min-width.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Layout tổng: sidebar + nội dung
+   -------------------------------------------------------------------- */
+.products-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+@media (min-width: 900px) {
+    .products-layout {
+        grid-template-columns: 260px 1fr;
+        gap: var(--space-xl);
+    }
+}
+
+/* --------------------------------------------------------------------
+   Bộ lọc sản phẩm
+   -------------------------------------------------------------------- */
+.product-filter {
+    position: static;
+    align-self: start;
+}
+
+.product-filter ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.product-filter li {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.5em 1em;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: border-color 0.2s var(--ease-standard),
+                color 0.2s var(--ease-standard);
+}
+
+.product-filter li:hover,
+.product-filter li:focus-visible {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+@media (min-width: 900px) {
+    .product-filter {
+        position: sticky;
+        top: var(--space-md);
+    }
+
+    .product-filter ul {
+        flex-direction: column;
+    }
+}
+
+/* --------------------------------------------------------------------
+   Lưới danh sách sản phẩm (Grid)
+   -------------------------------------------------------------------- */
+.product-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 560px) {
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1150px) {
+    .product-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --------------------------------------------------------------------
+   Thẻ sản phẩm (Flexbox cho nội dung bên trong)
+   -------------------------------------------------------------------- */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    transition: transform 0.2s var(--ease-standard),
+                box-shadow 0.2s var(--ease-standard);
+}
+
+.product-card:hover,
+.product-card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(30, 41, 59, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.product-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.product-card p {
+    margin-bottom: 0;
+    color: var(--color-muted);
+}
+
+.product-card p strong {
+    color: var(--color-primary);
+}
+
+.product-card a {
+    margin-top: auto;
+    align-self: flex-start;
+    padding-top: var(--space-sm);
+}

@@ -8,6 +8,7 @@
     <meta name="description"
         content="Thông tin chi tiết sản phẩm Cà phê Buôn Ma Thuột đặc sản Tây Nguyên">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product-detail.css">
 </head>
 
 <body>
@@ -32,8 +33,10 @@
     <!-- Main -->
     <main>
 
+        <div class="product-detail-layout">
+
         <!-- Chi tiết sản phẩm -->
-        <section>
+        <section class="product-main">
             <article>
 
                 <h1>Cà Phê Buôn Ma Thuột</h1>
@@ -68,40 +71,46 @@
 
                 <h2>Hành động</h2>
 
-                <button>Thêm vào giỏ hàng</button>
-                <button>Liên hệ tư vấn</button>
+                <div class="action-buttons">
+                    <button>Thêm vào giỏ hàng</button>
+                    <button>Liên hệ tư vấn</button>
+                </div>
 
             </article>
         </section>
 
         <!-- Sản phẩm liên quan -->
-        <aside>
+        <aside class="related-products">
             <h2>Sản phẩm liên quan</h2>
 
-            <article>
-                <h3>Mật Ong Rừng</h3>
-                <img src="images/mat-ong-rung-tay-nguyen.jpg"
-                     alt="Mật ong rừng Tây Nguyên"
-                     width="150">
-                <p>Giá: 250.000 VNĐ</p>
-            </article>
+            <div class="related-products-grid">
+                <article class="related-card">
+                    <h3>Mật Ong Rừng</h3>
+                    <img src="images/mat-ong-rung-tay-nguyen.jpg"
+                         alt="Mật ong rừng Tây Nguyên"
+                         width="150">
+                    <p>Giá: 250.000 VNĐ</p>
+                </article>
 
-            <article>
-                <h3>Bơ Sáp Đắk Lắk</h3>
-                <img src="images/bo-sap-dak-lak.jpg"
-                     alt="Bơ sáp Đắk Lắk"
-                     width="150">
-                <p>Giá: 120.000 VNĐ</p>
-            </article>
+                <article class="related-card">
+                    <h3>Bơ Sáp Đắk Lắk</h3>
+                    <img src="images/bo-sap-dak-lak.jpg"
+                         alt="Bơ sáp Đắk Lắk"
+                         width="150">
+                    <p>Giá: 120.000 VNĐ</p>
+                </article>
 
-            <article>
-                <h3>Hạt Macca Tây Nguyên</h3>
-                <img src="images/mac-ca-tay-nguyen.jpg"
-                     alt="Hạt macca Tây Nguyên"
-                     width="150">
-                <p>Giá: 300.000 VNĐ</p>
-            </article>
+                <article class="related-card">
+                    <h3>Hạt Macca Tây Nguyên</h3>
+                    <img src="images/mac-ca-tay-nguyen.jpg"
+                         alt="Hạt macca Tây Nguyên"
+                         width="150">
+                    <p>Giá: 300.000 VNĐ</p>
+                </article>
+            </div>
         </aside>
+
+        </div>
 
     </main>
 

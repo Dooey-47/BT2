@@ -8,6 +8,7 @@
     <meta name="description"
         content="Danh sách các sản phẩm đặc sản Tây Nguyên chất lượng cao">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
 </head>
 
 <body>
@@ -41,71 +42,75 @@
             </p>
         </section>
 
-        <!-- Bộ lọc -->
-        <aside>
-            <h2>Bộ lọc sản phẩm</h2>
+        <div class="products-layout">
 
-            <ul>
-                <li>Cà phê</li>
-                <li>Mật ong</li>
-                <li>Mac ca</li>
-                <li>Bơ sáp</li>
-                <li>Tiêu Dak Nong</li>
-            </ul>
-        </aside>
+            <!-- Bộ lọc -->
+            <aside class="product-filter">
+                <h2>Bộ lọc sản phẩm</h2>
 
-        <!-- Danh sách sản phẩm -->
-        <section>
+                <ul>
+                    <li>Cà phê</li>
+                    <li>Mật ong</li>
+                    <li>Mac ca</li>
+                    <li>Bơ sáp</li>
+                    <li>Tiêu Dak Nong</li>
+                </ul>
+            </aside>
 
-            <article>
-                <img src="images/bo-sap-dak-lak.jpg" alt="Bơ Sáp" width="200">
-                <h2>Bơ sáp</h2>
-                <p>Bơ sáp nguyên chất từ vùng núi rừng Tây Nguyên.</p>
-                <p><strong>Giá:</strong> 350.000 VNĐ</p>
-                <a href="product-detail.html">Xem chi tiết</a>
-            </article>
+            <!-- Danh sách sản phẩm -->
+            <section class="product-list">
 
-            <article>
-                <img src="images/ca-phe-buon-ma-thuot.jpg" alt="Cà phê Buôn Ma Thuột" width="200">
-                <h2>Cà phê Buôn Ma Thuột</h2>
-                <p>Cà phê nguyên chất, hương vị đậm đà.</p>
-                <p><strong>Giá:</strong> 150.000 VNĐ</p>
-                <a href="product-detail.html">Xem chi tiết</a>
-            </article>
+                <article class="product-card">
+                    <img src="images/bo-sap-dak-lak.jpg" alt="Bơ Sáp" width="200">
+                    <h2>Bơ sáp</h2>
+                    <p>Bơ sáp nguyên chất từ vùng núi rừng Tây Nguyên.</p>
+                    <p><strong>Giá:</strong> 350.000 VNĐ</p>
+                    <a href="product-detail.html">Xem chi tiết</a>
+                </article>
 
-            <article>
-                <img src="images/mac-ca-tay-nguyen.jpg" alt="Mac ca Đắk Lắk" width="200">
-                <h2>Mac ca Đắk Lắk</h2>
-                <p>Cây Mac ca được thu hoạch trực tiếp.</p>
-                <p><strong>Giá:</strong> 120.000 VNĐ</p>
-                <a href="product-detail.html">Xem chi tiết</a>
-            </article>
+                <article class="product-card">
+                    <img src="images/ca-phe-buon-ma-thuot.jpg" alt="Cà phê Buôn Ma Thuột" width="200">
+                    <h2>Cà phê Buôn Ma Thuột</h2>
+                    <p>Cà phê nguyên chất, hương vị đậm đà.</p>
+                    <p><strong>Giá:</strong> 150.000 VNĐ</p>
+                    <a href="product-detail.html">Xem chi tiết</a>
+                </article>
 
-            <article>
-                <img src="images/mat-ong-rung-tay-nguyen.jpg" alt="Mật ong rừng Tây Nguyên" width="200">
-                <h2>Mật ong rừng Tây nguyên</h2>
-                <p>Mật ong tự nhiên được khai thác từ rừng.</p>
-                <p><strong>Giá:</strong> 250.000 VNĐ</p>
-                <a href="product-detail.html">Xem chi tiết</a>
-            </article>
+                <article class="product-card">
+                    <img src="images/mac-ca-tay-nguyen.jpg" alt="Mac ca Đắk Lắk" width="200">
+                    <h2>Mac ca Đắk Lắk</h2>
+                    <p>Cây Mac ca được thu hoạch trực tiếp.</p>
+                    <p><strong>Giá:</strong> 120.000 VNĐ</p>
+                    <a href="product-detail.html">Xem chi tiết</a>
+                </article>
 
-            <article>
-                <img src="images/tho-cam-tay-nguyen.jpg" alt="Thổ cẩm" width="200">
-                <h2>Thổ cẩm Tây Nguyên</h2>
-                <p>Vải dệt thủ công truyền thống, chất lượng cao.</p>
-                <p><strong>Giá:</strong> 200.000 VNĐ</p>
-                <a href="product-detail.html">Xem chi tiết</a>
-            </article>
+                <article class="product-card">
+                    <img src="images/mat-ong-rung-tay-nguyen.jpg" alt="Mật ong rừng Tây Nguyên" width="200">
+                    <h2>Mật ong rừng Tây nguyên</h2>
+                    <p>Mật ong tự nhiên được khai thác từ rừng.</p>
+                    <p><strong>Giá:</strong> 250.000 VNĐ</p>
+                    <a href="product-detail.html">Xem chi tiết</a>
+                </article>
 
-            <article>
-                <img src="images/tieu-dak-nong.jpg" alt="Tiêu Đắk Nông" width="200">
-                <h2>Tiêu Đắk Nông</h2>
-                <p>Hạt tiêu thơm cay đặc trưng vùng cao nguyên.</p>
-                <p><strong>Giá:</strong> 180.000 VNĐ</p>
-                <a href="product-detail.html">Xem chi tiết</a>
-            </article>
+                <article class="product-card">
+                    <img src="images/tho-cam-tay-nguyen.jpg" alt="Thổ cẩm" width="200">
+                    <h2>Thổ cẩm Tây Nguyên</h2>
+                    <p>Vải dệt thủ công truyền thống, chất lượng cao.</p>
+                    <p><strong>Giá:</strong> 200.000 VNĐ</p>
+                    <a href="product-detail.html">Xem chi tiết</a>
+                </article>
 
-        </section>
+                <article class="product-card">
+                    <img src="images/tieu-dak-nong.jpg" alt="Tiêu Đắk Nông" width="200">
+                    <h2>Tiêu Đắk Nông</h2>
+                    <p>Hạt tiêu thơm cay đặc trưng vùng cao nguyên.</p>
+                    <p><strong>Giá:</strong> 180.000 VNĐ</p>
+                    <a href="product-detail.html">Xem chi tiết</a>
+                </article>
+
+            </section>
+
+        </div>
 
     </main>
 
