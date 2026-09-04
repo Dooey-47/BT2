@@ -4,56 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sản Phẩm - Đặc Sản Tây Nguyên</title>
-    <meta name="description" content="Danh sách các sản phẩm đặc sản Tây Nguyên chất lượng cao">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <img src="images/logo tn2.jpg" alt="Logo Đặc Sản Tây Nguyên" width="100">
-        <h1>Đặc Sản Tây Nguyên</h1>
-        <p>Tinh hoa núi rừng - Hương vị quê hương</p>
-    </header>
+<header>
+    <img src="images/logo tn2.jpg" alt="Logo Đặc Sản Tây Nguyên" width="100">
+    <h1>Đặc Sản Tây Nguyên</h1>
+    <p>Tinh hoa núi rừng - Hương vị quê hương</p>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="products.html">Sản phẩm</a></li>
+        <li><a href="product-detail.html">Chi tiết sản phẩm</a></li>
+        <li><a href="contact.html">Đặt hàng</a></li>
+        <li>🛒 Giỏ hàng: <span id="cart-count">0</span></li>
+    </ul>
+</nav>
+<main>
+    <section>
+        <h1>Danh Sách Sản Phẩm</h1>
+        <p>Khám phá những đặc sản nổi tiếng của Tây Nguyên.</p>
+    </section>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Trang chủ</a></li>
-            <li><a href="products.html">Sản phẩm</a></li>
-            <li><a href="contact.html">Đặt hàng</a></li>
-            <li><span class="cart-info">Giỏ hàng: <strong id="cart-count">0</strong></span></li>
-        </ul>
-    </nav>
+    <section class="filters">
+        <h2>Tìm kiếm và lọc sản phẩm</h2>
+        <input type="text" id="search-input" placeholder="Nhập tên sản phẩm...">
+        <select id="category-filter">
+            <option value="all">Tất cả danh mục</option>
+            <option value="Cà phê">Cà phê</option>
+            <option value="Mật ong">Mật ong</option>
+            <option value="Macca">Macca</option>
+            <option value="Trái cây">Trái cây</option>
+            <option value="Gia vị">Gia vị</option>
+            <option value="Thủ công">Thủ công</option>
+        </select>
+    </section>
 
-    <main>
-        <section>
-            <h1>Danh Sách Sản Phẩm</h1>
-            <p>Khám phá những đặc sản nổi tiếng của Tây Nguyên.</p>
-
-            <div class="product-filter">
-                <label for="search-input">Tìm kiếm:</label>
-                <input type="search" id="search-input" placeholder="Nhập tên sản phẩm...">
-
-                <label for="category-filter">Danh mục:</label>
-                <select id="category-filter">
-                    <option value="">Tất cả</option>
-                    <option value="Cà phê">Cà phê</option>
-                    <option value="Mật ong">Mật ong</option>
-                    <option value="Macca">Macca</option>
-                    <option value="Bơ sáp">Bơ sáp</option>
-                    <option value="Tiêu">Tiêu</option>
-                    <option value="Thổ cẩm">Thổ cẩm</option>
-                </select>
-            </div>
-        </section>
-
-        <section id="product-list" class="product-list"></section>
-    </main>
-
-    <footer>
-        <p>Email: dacsantaynguyen@gmail.com</p>
-        <p>Hotline: 0123 456 789</p>
-        <p>&copy; 2026 Đặc Sản Tây Nguyên. All Rights Reserved.</p>
-    </footer>
-
-    <script src="js/main.js"></script>
+    <section id="product-list" class="product-list"></section>
+</main>
+<footer>
+    <p>Email: dacsantaynguyen@gmail.com</p>
+    <p>Hotline: 0123 456 789</p>
+    <p>&copy; 2026 Đặc Sản Tây Nguyên.</p>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -2,194 +2,208 @@
 const products = [
     {
         id: 1,
-        name: 'Bơ sáp Đắk Lắk',
-        price: 350000,
-        category: 'Bơ sáp',
-        image: 'images/bo-sap-dak-lak.jpg',
-        description: 'Bơ sáp dẻo, béo, thơm từ vùng đất Đắk Lắk.'
+        name: "Cà phê Buôn Ma Thuột",
+        category: "Cà phê",
+        price: 150000,
+        image: "images/ca-phe-buon-ma-thuot.jpg",
+        description: "Cà phê nguyên chất, hương vị đậm đà đặc trưng Tây Nguyên."
     },
     {
         id: 2,
-        name: 'Cà phê Buôn Ma Thuột',
-        price: 150000,
-        category: 'Cà phê',
-        image: 'images/ca-phe-buon-ma-thuot.jpg',
-        description: 'Cà phê nguyên chất, hương vị đậm đà đặc trưng.'
+        name: "Mật ong rừng Tây Nguyên",
+        category: "Mật ong",
+        price: 250000,
+        image: "images/mat-ong-rung-tay-nguyen.jpg",
+        description: "Mật ong tự nhiên được khai thác từ rừng Tây Nguyên."
     },
     {
         id: 3,
-        name: 'Hạt macca Tây Nguyên',
-        price: 120000,
-        category: 'Macca',
-        image: 'images/mac-ca-tay-nguyen.jpg',
-        description: 'Hạt macca thơm ngon, giàu dinh dưỡng.'
+        name: "Hạt Macca Tây Nguyên",
+        category: "Macca",
+        price: 300000,
+        image: "images/mac-ca-tay-nguyen.jpg",
+        description: "Hạt macca thơm ngon, giàu dinh dưỡng."
     },
     {
         id: 4,
-        name: 'Mật ong rừng Tây Nguyên',
-        price: 250000,
-        category: 'Mật ong',
-        image: 'images/mat-ong-rung-tay-nguyen.jpg',
-        description: 'Mật ong tự nhiên được khai thác từ rừng Tây Nguyên.'
+        name: "Bơ sáp Đắk Lắk",
+        category: "Trái cây",
+        price: 120000,
+        image: "images/bo-sap-dak-lak.jpg",
+        description: "Bơ sáp dẻo, béo, được tuyển chọn từ Đắk Lắk."
     },
     {
         id: 5,
-        name: 'Thổ cẩm Tây Nguyên',
-        price: 200000,
-        category: 'Thổ cẩm',
-        image: 'images/tho-cam-tay-nguyen.jpg',
-        description: 'Sản phẩm dệt thủ công mang đậm bản sắc Tây Nguyên.'
+        name: "Tiêu Đắk Nông",
+        category: "Gia vị",
+        price: 180000,
+        image: "images/tieu-dak-nong.jpg",
+        description: "Hạt tiêu thơm cay đặc trưng vùng cao nguyên."
     },
     {
         id: 6,
-        name: 'Tiêu Đắk Nông',
-        price: 180000,
-        category: 'Tiêu',
-        image: 'images/tieu-dak-nong.jpg',
-        description: 'Hạt tiêu thơm cay đặc trưng của Đắk Nông.'
+        name: "Thổ cẩm Tây Nguyên",
+        category: "Thủ công",
+        price: 200000,
+        image: "images/tho-cam-tay-nguyen.jpg",
+        description: "Sản phẩm dệt thủ công mang đậm bản sắc Tây Nguyên."
     }
 ];
 
+// Giỏ hàng dùng JavaScript thuần.
+let cart = [];
+
 function formatPrice(price) {
-    return price.toLocaleString('vi-VN') + ' VNĐ';
+    return price.toLocaleString("vi-VN") + " VNĐ";
 }
 
-// Tạo HTML cho một sản phẩm
 function renderProductCard(product) {
     return `
         <article class="product-card">
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}" alt="${product.name}" width="200">
             <h2>${product.name}</h2>
             <p>${product.description}</p>
-            <p><strong>Giá: ${formatPrice(product.price)}</strong></p>
-            <div class="product-actions">
-                <a href="product-detail.html?id=${product.id}">Xem chi tiết</a>
-                <button type="button" class="add-to-cart" data-id="${product.id}">
-                    Thêm vào giỏ hàng
-                </button>
-            </div>
+            <p><strong>Danh mục:</strong> ${product.category}</p>
+            <p class="price"><strong>${formatPrice(product.price)}</strong></p>
+            <button type="button" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</button>
+            <a class="detail-link" href="product-detail.html?id=${product.id}">Xem chi tiết</a>
         </article>
     `;
 }
 
-function getCart() {
-    return JSON.parse(localStorage.getItem('cart') || '[]');
+function renderProducts(list) {
+    const productList = document.getElementById("product-list");
+    if (!productList) return;
+
+    if (list.length === 0) {
+        productList.innerHTML = "<p>Không tìm thấy sản phẩm phù hợp.</p>";
+        return;
+    }
+
+    productList.innerHTML = list.map(renderProductCard).join("");
 }
 
-function updateCartCount() {
-    const cartCount = document.querySelector('#cart-count');
-    if (!cartCount) return;
+function filterProducts() {
+    const keywordInput = document.getElementById("search-input");
+    const categoryInput = document.getElementById("category-filter");
 
-    const total = getCart().reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = total;
+    const keyword = keywordInput ? keywordInput.value.toLowerCase().trim() : "";
+    const category = categoryInput ? categoryInput.value : "all";
+
+    const filteredProducts = products.filter(function (product) {
+        const matchKeyword = product.name.toLowerCase().includes(keyword);
+        const matchCategory = category === "all" || product.category === category;
+        return matchKeyword && matchCategory;
+    });
+
+    renderProducts(filteredProducts);
 }
 
 function addToCart(productId) {
-    const product = products.find(item => item.id === productId);
+    const product = products.find(function (item) {
+        return item.id === productId;
+    });
+
     if (!product) return;
 
-    const cart = getCart();
-    const item = cart.find(item => item.id === productId);
+    const item = cart.find(function (cartItem) {
+        return cartItem.id === productId;
+    });
 
     if (item) {
         item.quantity += 1;
     } else {
-        cart.push({ id: productId, quantity: 1 });
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: 1
+        });
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
-    alert(`Đã thêm "${product.name}" vào giỏ hàng.`);
+    alert(product.name + " đã được thêm vào giỏ hàng!");
 }
 
-function setupCartButtons() {
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', () => {
-            addToCart(Number(button.dataset.id));
-        });
+function updateCartCount() {
+    const cartCount = document.getElementById("cart-count");
+    if (!cartCount) return;
+
+    let totalQuantity = 0;
+    cart.forEach(function (item) {
+        totalQuantity += item.quantity;
     });
+
+    cartCount.textContent = totalQuantity;
 }
 
-function renderProducts() {
-    const productList = document.querySelector('#product-list');
-    if (!productList) return;
-
-    const searchInput = document.querySelector('#search-input');
-    const categoryFilter = document.querySelector('#category-filter');
-
-    function filterProducts() {
-        const keyword = searchInput.value.trim().toLowerCase();
-        const category = categoryFilter.value;
-
-        const filtered = products.filter(product => {
-            const matchesKeyword = product.name.toLowerCase().includes(keyword);
-            const matchesCategory = !category || product.category === category;
-            return matchesKeyword && matchesCategory;
-        });
-
-        productList.innerHTML = filtered.length
-            ? filtered.map(renderProductCard).join('')
-            : '<p class="no-result">Không tìm thấy sản phẩm phù hợp.</p>';
-
-        setupCartButtons();
-    }
-
-    searchInput.addEventListener('input', filterProducts);
-    categoryFilter.addEventListener('change', filterProducts);
-    filterProducts();
-}
-
-function renderProductDetail() {
-    const detail = document.querySelector('#product-detail');
+function showProductDetail() {
+    const detail = document.getElementById("product-detail");
     if (!detail) return;
 
-    const id = Number(new URLSearchParams(window.location.search).get('id')) || 2;
-    const product = products.find(item => item.id === id) || products[1];
+    const params = new URLSearchParams(window.location.search);
+    const productId = Number(params.get("id")) || 1;
+    const product = products.find(function (item) {
+        return item.id === productId;
+    }) || products[0];
 
     detail.innerHTML = `
-        <article>
-            <h1>${product.name}</h1>
-            <img src="${product.image}" alt="${product.name}" class="detail-image">
-            <h2>Mô tả sản phẩm</h2>
-            <p>${product.description}</p>
-            <p><strong>Giá: ${formatPrice(product.price)}</strong></p>
-            <p><strong>Danh mục:</strong> ${product.category}</p>
-            <button type="button" class="add-to-cart" data-id="${product.id}">Thêm vào giỏ hàng</button>
-        </article>
+        <h1>${product.name}</h1>
+        <img src="${product.image}" alt="${product.name}" width="350">
+        <h2>Mô tả sản phẩm</h2>
+        <p>${product.description}</p>
+        <h2>Giá bán</h2>
+        <p class="price"><strong>${formatPrice(product.price)}</strong></p>
+        <h2>Thông tin sản phẩm</h2>
+        <ul>
+            <li><strong>Danh mục:</strong> ${product.category}</li>
+            <li><strong>Xuất xứ:</strong> Tây Nguyên</li>
+        </ul>
+        <button type="button" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</button>
     `;
-
-    setupCartButtons();
 }
 
-function validateOrderForm() {
-    const form = document.querySelector('#order-form');
-    if (!form) return;
+function validateOrderForm(event) {
+    event.preventDefault();
 
-    form.addEventListener('submit', event => {
-        event.preventDefault();
+    const fullname = document.getElementById("fullname");
+    const phone = document.getElementById("phone");
+    const address = document.getElementById("address");
+    const message = document.getElementById("form-message");
 
-        const fullname = document.querySelector('#fullname').value.trim();
-        const phone = document.querySelector('#phone').value.trim();
-        const address = document.querySelector('#address').value.trim();
+    if (!fullname.value.trim()) {
+        message.textContent = "Vui lòng nhập họ tên.";
+        fullname.focus();
+        return false;
+    }
 
-        if (!fullname || !phone || !address) {
-            alert('Vui lòng nhập đầy đủ họ tên, số điện thoại và địa chỉ.');
-            return;
-        }
+    if (!/^0\d{9,10}$/.test(phone.value.trim())) {
+        message.textContent = "Số điện thoại không hợp lệ.";
+        phone.focus();
+        return false;
+    }
 
-        if (!/^0\d{9,10}$/.test(phone)) {
-            alert('Số điện thoại không hợp lệ. Vui lòng nhập 10-11 chữ số và bắt đầu bằng 0.');
-            return;
-        }
+    if (!address.value.trim()) {
+        message.textContent = "Vui lòng nhập địa chỉ.";
+        address.focus();
+        return false;
+    }
 
-        alert('Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm.');
-        form.reset();
-    });
+    message.textContent = "Đặt hàng thành công! Cảm ơn bạn đã mua hàng.";
+    event.target.reset();
+    return false;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", function () {
+    renderProducts(products);
+    showProductDetail();
     updateCartCount();
-    renderProducts();
-    renderProductDetail();
-    validateOrderForm();
+
+    const searchInput = document.getElementById("search-input");
+    const categoryFilter = document.getElementById("category-filter");
+    const orderForm = document.getElementById("order-form");
+
+    if (searchInput) searchInput.addEventListener("input", filterProducts);
+    if (categoryFilter) categoryFilter.addEventListener("change", filterProducts);
+    if (orderForm) orderForm.addEventListener("submit", validateOrderForm);
 });

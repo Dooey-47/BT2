@@ -4,54 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đặt Hàng - Đặc Sản Tây Nguyên</title>
-    <meta name="description" content="Đặt hàng đặc sản Tây Nguyên">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <img src="images/logo tn2.jpg" alt="Logo Đặc Sản Tây Nguyên" width="100">
-        <h1>Đặc Sản Tây Nguyên</h1>
-        <p>Tinh hoa núi rừng - Hương vị quê hương</p>
-    </header>
+<header>
+    <img src="images/logo tn2.jpg" alt="Logo Đặc Sản Tây Nguyên" width="100">
+    <h1>Đặc Sản Tây Nguyên</h1>
+    <p>Tinh hoa núi rừng - Hương vị quê hương</p>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="products.html">Sản phẩm</a></li>
+        <li><a href="product-detail.html">Chi tiết sản phẩm</a></li>
+        <li><a href="contact.html">Đặt hàng</a></li>
+        <li>🛒 Giỏ hàng: <span id="cart-count">0</span></li>
+    </ul>
+</nav>
+<main>
+    <section>
+        <h1>Đặt Hàng</h1>
+        <p>Vui lòng nhập đầy đủ thông tin để đặt hàng.</p>
+    </section>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Trang chủ</a></li>
-            <li><a href="products.html">Sản phẩm</a></li>
-            <li><a href="contact.html">Đặt hàng</a></li>
-            <li><span class="cart-info">Giỏ hàng: <strong id="cart-count">0</strong></span></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section>
-            <h1>Đặt Hàng</h1>
-            <p>Vui lòng nhập đầy đủ thông tin để chúng tôi liên hệ xác nhận đơn hàng.</p>
-
-            <form id="order-form" action="#" method="post">
-                <p>
-                    <label for="fullname">Họ và tên:</label><br>
-                    <input type="text" id="fullname" name="fullname" required>
-                </p>
-                <p>
-                    <label for="phone">Số điện thoại:</label><br>
-                    <input type="tel" id="phone" name="phone" required>
-                </p>
-                <p>
-                    <label for="address">Địa chỉ:</label><br>
-                    <textarea id="address" name="address" rows="3" required></textarea>
-                </p>
-                <button type="submit">Xác nhận đặt hàng</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>Email: dacsantaynguyen@gmail.com</p>
-        <p>Hotline: 0123 456 789</p>
-        <p>&copy; 2026 Đặc Sản Tây Nguyên. All Rights Reserved.</p>
-    </footer>
-
-    <script src="js/main.js"></script>
+    <section>
+        <form id="order-form">
+            <p>
+                <label for="fullname">Họ và tên:</label><br>
+                <input type="text" id="fullname" name="fullname">
+            </p>
+            <p>
+                <label for="phone">Số điện thoại:</label><br>
+                <input type="tel" id="phone" name="phone" placeholder="0123456789">
+            </p>
+            <p>
+                <label for="address">Địa chỉ:</label><br>
+                <textarea id="address" name="address" rows="3"></textarea>
+            </p>
+            <p>
+                <label for="product">Sản phẩm muốn đặt:</label><br>
+                <input type="text" id="product" name="product">
+            </p>
+            <button type="submit">Đặt hàng</button>
+            <p id="form-message"></p>
+        </form>
+    </section>
+</main>
+<footer>
+    <p>Email: dacsantaynguyen@gmail.com</p>
+    <p>Hotline: 0123 456 789</p>
+    <p>&copy; 2026 Đặc Sản Tây Nguyên.</p>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>
