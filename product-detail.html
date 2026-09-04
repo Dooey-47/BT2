@@ -1,118 +1,39 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cà Phê Buôn Ma Thuột - Chi Tiết Sản Phẩm</title>
-    <meta name="description"
-        content="Thông tin chi tiết sản phẩm Cà phê Buôn Ma Thuột đặc sản Tây Nguyên">
+    <title>Chi Tiết Sản Phẩm - Đặc Sản Tây Nguyên</title>
+    <meta name="description" content="Thông tin chi tiết sản phẩm đặc sản Tây Nguyên">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-    <!-- Header -->
     <header>
-        <img src="images/logo.png" alt="Logo Đặc Sản Tây Nguyên" width="100">
+        <img src="images/logo tn2.jpg" alt="Logo Đặc Sản Tây Nguyên" width="100">
         <h1>Đặc Sản Tây Nguyên</h1>
         <p>Tinh hoa núi rừng - Hương vị quê hương</p>
     </header>
 
-    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="index.html">Trang chủ</a></li>
             <li><a href="products.html">Sản phẩm</a></li>
             <li><a href="product-detail.html">Chi tiết sản phẩm</a></li>
-            <li><a href="contact.html">Liên hệ</a></li>
+            <li><a href="contact.html">Đặt hàng</a></li>
+            <li><span class="cart-info">Giỏ hàng: <strong id="cart-count">0</strong></span></li>
         </ul>
     </nav>
 
-    <!-- Main -->
     <main>
-
-        <!-- Chi tiết sản phẩm -->
-        <section>
-            <article>
-
-                <h1>Cà Phê Buôn Ma Thuột</h1>
-
-                <img src="images/ca-phe-buon-ma-thuot.jpg"
-                     alt="Cà phê Buôn Ma Thuột nguyên chất"
-                     width="350">
-
-                <h2>Mô tả sản phẩm</h2>
-
-                <p>
-                    Cà phê Buôn Ma Thuột là một trong những đặc sản nổi tiếng
-                    nhất của Tây Nguyên. Hạt cà phê được tuyển chọn kỹ lưỡng,
-                    rang xay theo quy trình hiện đại, mang đến hương thơm đậm đà
-                    và vị cà phê nguyên chất đặc trưng.
-                </p>
-
-                <h2>Giá bán</h2>
-
-                <p>
-                    <strong>150.000 VNĐ / gói</strong>
-                </p>
-
-                <h2>Thông tin sản phẩm</h2>
-
-                <ul>
-                    <li><strong>Xuất xứ:</strong> Buôn Ma Thuột, Đắk Lắk</li>
-                    <li><strong>Khối lượng:</strong> 500g</li>
-                    <li><strong>Hạn sử dụng:</strong> 12 tháng</li>
-                    <li><strong>Cách bảo quản:</strong> Để nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp.</li>
-                </ul>
-
-                <h2>Hành động</h2>
-
-                <button>Thêm vào giỏ hàng</button>
-                <button>Liên hệ tư vấn</button>
-
-            </article>
-        </section>
-
-        <!-- Sản phẩm liên quan -->
-        <aside>
-            <h2>Sản phẩm liên quan</h2>
-
-            <article>
-                <h3>Mật Ong Rừng</h3>
-                <img src="images/mat-ong-rung-tay-nguyen.jpg"
-                     alt="Mật ong rừng Tây Nguyên"
-                     width="150">
-                <p>Giá: 250.000 VNĐ</p>
-            </article>
-
-            <article>
-                <h3>Bơ Sáp Đắk Lắk</h3>
-                <img src="images/bo-sap-dak-lak.jpg"
-                     alt="Bơ sáp Đắk Lắk"
-                     width="150">
-                <p>Giá: 120.000 VNĐ</p>
-            </article>
-
-            <article>
-                <h3>Hạt Macca Tây Nguyên</h3>
-                <img src="images/mac-ca-tay-nguyen.jpg"
-                     alt="Hạt macca Tây Nguyên"
-                     width="150">
-                <p>Giá: 300.000 VNĐ</p>
-            </article>
-        </aside>
-
+        <section id="product-detail"></section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>Email: dacsantaynguyen@gmail.com</p>
         <p>Hotline: 0123 456 789</p>
-        <p>Địa chỉ: Buôn Ma Thuột, Đắk Lắk</p>
         <p>&copy; 2026 Đặc Sản Tây Nguyên. All Rights Reserved.</p>
     </footer>
 
+    <script src="js/main.js"></script>
 </body>
-
 </html>

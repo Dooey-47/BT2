@@ -389,3 +389,127 @@ footer p {
         transition: none !important;
     }
 }
+/* JAVASCRIPT PRODUCT LIST */
+.product-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: center;
+    padding: var(--space-md);
+    margin-top: var(--space-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.product-filter input,
+.product-filter select,
+#order-form input,
+#order-form textarea {
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font: inherit;
+}
+
+.product-filter input {
+    min-width: 220px;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+.product-card h2,
+.product-card p {
+    margin: 0;
+}
+
+.product-card p {
+    color: var(--color-muted);
+}
+
+.product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: auto;
+}
+
+button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: var(--radius-md);
+    color: var(--color-surface);
+    background-color: var(--color-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+button:hover {
+    background-color: var(--color-secondary);
+}
+
+.cart-info {
+    display: block;
+    padding: var(--space-md);
+    color: var(--color-surface);
+    font-weight: bold;
+}
+
+.detail-image {
+    width: min(100%, 450px);
+    margin-bottom: var(--space-lg);
+    border-radius: var(--radius-md);
+}
+
+#product-detail article,
+#order-form {
+    padding: var(--space-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+#order-form input,
+#order-form textarea {
+    width: min(100%, 500px);
+}
+
+.no-result {
+    padding: var(--space-lg);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+@media (min-width: 600px) {
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .product-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
