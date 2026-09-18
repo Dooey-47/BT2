@@ -1,54 +1,5 @@
-// Danh sách sản phẩm
-const products = [
-    {
-        id: 1,
-        name: "Cà phê Buôn Ma Thuột",
-        category: "Cà phê",
-        price: 150000,
-        image: "images/ca-phe-buon-ma-thuot.jpg",
-        description: "Cà phê nguyên chất, hương vị đậm đà đặc trưng Tây Nguyên."
-    },
-    {
-        id: 2,
-        name: "Mật ong rừng Tây Nguyên",
-        category: "Mật ong",
-        price: 250000,
-        image: "images/mat-ong-rung-tay-nguyen.jpg",
-        description: "Mật ong tự nhiên được khai thác từ rừng Tây Nguyên."
-    },
-    {
-        id: 3,
-        name: "Hạt Macca Tây Nguyên",
-        category: "Macca",
-        price: 300000,
-        image: "images/mac-ca-tay-nguyen.jpg",
-        description: "Hạt macca thơm ngon, giàu dinh dưỡng."
-    },
-    {
-        id: 4,
-        name: "Bơ sáp Đắk Lắk",
-        category: "Trái cây",
-        price: 120000,
-        image: "images/bo-sap-dak-lak.jpg",
-        description: "Bơ sáp dẻo, béo, được tuyển chọn từ Đắk Lắk."
-    },
-    {
-        id: 5,
-        name: "Tiêu Đắk Nông",
-        category: "Gia vị",
-        price: 180000,
-        image: "images/tieu-dak-nong.jpg",
-        description: "Hạt tiêu thơm cay đặc trưng vùng cao nguyên."
-    },
-    {
-        id: 6,
-        name: "Thổ cẩm Tây Nguyên",
-        category: "Thủ công",
-        price: 200000,
-        image: "images/tho-cam-tay-nguyen.jpg",
-        description: "Sản phẩm dệt thủ công mang đậm bản sắc Tây Nguyên."
-    }
-];
+// Danh sách sản phẩm được tải từ data/products.json.
+let products = [];
 
 // Giỏ hàng dùng JavaScript thuần.
 let cart = [];
@@ -62,9 +13,12 @@ function renderProductCard(product) {
         <article class="product-card">
             <img src="${product.image}" alt="${product.name}" width="200">
             <h2>${product.name}</h2>
+            ${product.featured ? '<p class="featured-badge">Sản phẩm nổi bật</p>' : ''}
             <p>${product.description}</p>
             <p><strong>Danh mục:</strong> ${product.category}</p>
-            <p class="price"><strong>${formatPrice(product.price)}</strong></p>
+            <p><strong>Xuất xứ:</strong> ${product.origin}</p>
+            <p><strong>Tồn kho:</strong> ${product.stock} ${product.unit}</p>
+            <p class="price"><strong>${formatPrice(product.price)} / ${product.unit}</strong></p>
             <button type="button" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</button>
             <a class="detail-link" href="product-detail.html?id=${product.id}">Xem chi tiết</a>
         </article>
@@ -137,6 +91,31 @@ function updateCartCount() {
     cartCount.textContent = totalQuantity;
 }
 
+function showProductLoadError() {
+    const container = document.getElementById("product-list") ||
+        document.getElementById("product-detail");
+
+    if (container) {
+        container.innerHTML = "<p>Không thể tải dữ liệu sản phẩm. Vui lòng thử lại sau.</p>";
+    }
+}
+
+async function loadProducts() {
+    const response = await fetch("data/products.json");
+
+    if (!response.ok) {
+        throw new Error("Không thể tải dữ liệu sản phẩm: " + response.status);
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+        throw new Error("Dữ liệu sản phẩm không hợp lệ.");
+    }
+
+    products = data;
+}
+
 function showProductDetail() {
     const detail = document.getElementById("product-detail");
     if (!detail) return;
@@ -150,14 +129,18 @@ function showProductDetail() {
     detail.innerHTML = `
         <h1>${product.name}</h1>
         <img src="${product.image}" alt="${product.name}" width="350">
+        ${product.featured ? '<p class="featured-badge">Sản phẩm nổi bật</p>' : ''}
         <h2>Mô tả sản phẩm</h2>
         <p>${product.description}</p>
         <h2>Giá bán</h2>
-        <p class="price"><strong>${formatPrice(product.price)}</strong></p>
+        <p class="price"><strong>${formatPrice(product.price)} / ${product.unit}</strong></p>
         <h2>Thông tin sản phẩm</h2>
         <ul>
             <li><strong>Danh mục:</strong> ${product.category}</li>
-            <li><strong>Xuất xứ:</strong> Tây Nguyên</li>
+            <li><strong>Đơn vị:</strong> ${product.unit}</li>
+            <li><strong>Xuất xứ:</strong> ${product.origin}</li>
+            <li><strong>Tồn kho:</strong> ${product.stock}</li>
+            <li><strong>Nổi bật:</strong> ${product.featured ? "Có" : "Không"}</li>
         </ul>
         <button type="button" onclick="addToCart(${product.id})">Thêm vào giỏ hàng</button>
     `;
@@ -194,9 +177,7 @@ function validateOrderForm(event) {
     return false;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    renderProducts(products);
-    showProductDetail();
+document.addEventListener("DOMContentLoaded", async function () {
     updateCartCount();
 
     const searchInput = document.getElementById("search-input");
@@ -206,4 +187,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (searchInput) searchInput.addEventListener("input", filterProducts);
     if (categoryFilter) categoryFilter.addEventListener("change", filterProducts);
     if (orderForm) orderForm.addEventListener("submit", validateOrderForm);
+
+    const hasProductContent = document.getElementById("product-list") ||
+        document.getElementById("product-detail");
+    if (!hasProductContent) return;
+
+    try {
+        await loadProducts();
+        renderProducts(products);
+        showProductDetail();
+    } catch (error) {
+        console.error(error);
+        showProductLoadError();
+    }
 });

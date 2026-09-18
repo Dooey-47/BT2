@@ -1,0 +1,12 @@
+[
+  {"id":1,"name":"Cà phê Buôn Ma Thuột","category":"Cà phê","price":150000,"unit":"gói 500g","origin":"Buôn Ma Thuột, Đắk Lắk","image":"images/ca-phe-buon-ma-thuot.jpg","stock":42,"description":"Cà phê nguyên chất, hương vị đậm đà đặc trưng Tây Nguyên.","featured":true},
+  {"id":2,"name":"Mật ong rừng Tây Nguyên","category":"Mật ong","price":250000,"unit":"chai 500ml","origin":"Kon Tum","image":"images/mat-ong-rung-tay-nguyen.jpg","stock":28,"description":"Mật ong tự nhiên được khai thác từ rừng Tây Nguyên.","featured":true},
+  {"id":3,"name":"Hạt Macca Tây Nguyên","category":"Macca","price":300000,"unit":"hộp 500g","origin":"Lâm Đồng","image":"images/mac-ca-tay-nguyen.jpg","stock":35,"description":"Hạt macca thơm ngon, giàu dinh dưỡng.","featured":true},
+  {"id":4,"name":"Bơ sáp Đắk Lắk","category":"Trái cây","price":120000,"unit":"kg","origin":"Đắk Lắk","image":"images/bo-sap-dak-lak.jpg","stock":50,"description":"Bơ sáp dẻo, béo, được tuyển chọn từ Đắk Lắk.","featured":false},
+  {"id":5,"name":"Tiêu Đắk Nông","category":"Gia vị","price":180000,"unit":"gói 500g","origin":"Đắk Nông","image":"images/tieu-dak-nong.jpg","stock":31,"description":"Hạt tiêu thơm cay đặc trưng vùng cao nguyên.","featured":false},
+  {"id":6,"name":"Thổ cẩm Tây Nguyên","category":"Thủ công","price":200000,"unit":"sản phẩm","origin":"Gia Lai","image":"images/tho-cam-tay-nguyen.jpg","stock":18,"description":"Sản phẩm dệt thủ công mang đậm bản sắc Tây Nguyên.","featured":true},
+  {"id":7,"name":"Rượu cần Tây Nguyên","category":"Đồ uống","price":320000,"unit":"ché 2 lít","origin":"Gia Lai","image":"images/logo tn1.jpg","stock":15,"description":"Rượu cần ủ theo hương vị truyền thống, thích hợp dùng trong dịp sum họp.","featured":false},
+  {"id":8,"name":"Sâm Ngọc Linh","category":"Dược liệu","price":850000,"unit":"hộp 100g","origin":"Kon Tum","image":"images/logo tn2.jpg","stock":12,"description":"Sản phẩm dược liệu vùng núi Ngọc Linh được đóng hộp tiện dụng.","featured":true},
+  {"id":9,"name":"Chuối sấy Lâm Đồng","category":"Đồ khô","price":95000,"unit":"gói 300g","origin":"Lâm Đồng","image":"images/logo tn1.jpg","stock":46,"description":"Chuối chín tự nhiên được sấy giòn, giữ vị ngọt thơm đặc trưng.","featured":false},
+  {"id":10,"name":"Bò một nắng Gia Lai","category":"Đồ khô","price":450000,"unit":"gói 500g","origin":"Gia Lai","image":"images/logo tn2.jpg","stock":22,"description":"Thịt bò tẩm ướp đậm vị, phơi một nắng và đóng gói bảo quản.","featured":true}
+]

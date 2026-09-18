@@ -442,6 +442,17 @@ form button {
     font-size: 18px;
 }
 
+.featured-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 4px 8px;
+    color: #fff;
+    background-color: var(--color-primary);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
 #form-message {
     font-weight: bold;
 }
