@@ -1,8 +1,8 @@
 // Danh sách sản phẩm được tải từ data/products.json.
 let products = [];
 
-// Giỏ hàng dùng JavaScript thuần.
-let cart = [];
+// Giỏ hàng được lưu dưới dạng JSON trong localStorage.
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function formatPrice(price) {
     return price.toLocaleString("vi-VN") + " VNĐ";
@@ -75,20 +75,25 @@ function addToCart(productId) {
         });
     }
 
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
     alert(product.name + " đã được thêm vào giỏ hàng!");
 }
 
 function updateCartCount() {
     const cartCount = document.getElementById("cart-count");
-    if (!cartCount) return;
+    const cartTotal = document.getElementById("cart-total");
 
     let totalQuantity = 0;
+    let totalPrice = 0;
+
     cart.forEach(function (item) {
         totalQuantity += item.quantity;
+        totalPrice += item.price * item.quantity;
     });
 
-    cartCount.textContent = totalQuantity;
+    if (cartCount) cartCount.textContent = totalQuantity;
+    if (cartTotal) cartTotal.textContent = formatPrice(totalPrice);
 }
 
 function showProductLoadError() {
